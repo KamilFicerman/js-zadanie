@@ -6,21 +6,30 @@ const PORT = 5000;
 const app = express();
 
 app.use(cors());
-const corsOptions = {
-    origin: "http://localhost:3000"
-};
 
 const requestEndpoint = "https://xkcd.com/327/info.0.json";
 
-// This function runs if the http://localhost:5000/getData endpoint
-// is requested with a GET request
-app.get('/getData', cors(corsOptions), async (req, res) => {
-    const fetchOptions = {
-        method: 'GET'
+app.get('/getData/:num', async (req, res) => {
+    const num = req.params.num;
+    const requestEndpoint = `https://xkcd.com/${num}/info.0.json`;
+
+    try {
+        const fetchOptions = {
+            method: 'GET'
+        };
+        const response = await fetch(requestEndpoint, fetchOptions);
+
+        // Check if response is ok
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const jsonResponse = await response.json();
+        res.json(jsonResponse);
+    } catch (error) {
+        console.error('Error fetching or parsing data:', error);
+        res.status(500).json({ error: 'Error fetching or parsing data' });
     }
-    const response = await fetch(requestEndpoint, fetchOptions);
-    const jsonResponse = await response.json();
-    res.json(jsonResponse);
 });
 
 app.listen(PORT, () => {
