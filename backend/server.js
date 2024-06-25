@@ -7,17 +7,13 @@ const app = express();
 
 app.use(cors());
 
-const requestEndpoint = "https://xkcd.com/327/info.0.json";
 
 app.get('/getData/:num', async (req, res) => {
     const num = req.params.num;
     const requestEndpoint = `https://xkcd.com/${num}/info.0.json`;
 
     try {
-        const fetchOptions = {
-            method: 'GET'
-        };
-        const response = await fetch(requestEndpoint, fetchOptions);
+        const response = await fetch(requestEndpoint);
 
         // Check if response is ok
         if (!response.ok) {
@@ -33,5 +29,5 @@ app.get('/getData/:num', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
+    console.log(`App listening at http://localhost:${PORT}`);
 });
