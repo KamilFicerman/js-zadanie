@@ -32,3 +32,5 @@ Aplikację można przetestować, wchodząc na stronę: [https://kamilficerman.gi
 2. **Generuj HTML**:
 - Aplikacja odczyta liczby z Twojego pliku tekstowego, pobierze odpowiednie dane z serwera i wygeneruje plik HTML do pobrania.
 - W przypadku opóźnienia proszę poczekać około minuty na odpowiedź serwera.
+3. **Pobierz**
+- Kliknij w przycisk "Pobierz" i korzystaj z przygotowanego pliku HTML.
