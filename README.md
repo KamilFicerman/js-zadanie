@@ -17,6 +17,10 @@ Ten projekt to prosta aplikacja webowa, która odczytuje plik tekstowy zawieraj�
 2. **Informacje o Hostingu**:
    - Serwer, z którego pobierane są dane, jest hostowany na render.com.
    - Ze względu na charakter hostingu na render.com, może wystąpić opóźnienie wynoszące około minuty w otrzymywaniu odpowiedzi z serwera. Proszę o cierpliwość podczas pobierania danych.
+   - **Dlaczego Potrzebny Jest Własny Serwer Proxy**:
+     - Aby pobierać dane z zewnętrznego serwera (np. xkcd.com), konieczne było użycie własnego serwera proxy z powodu ograniczeń CORS (Cross-Origin Resource Sharing).
+     - CORS to mechanizm bezpieczeństwa przeglądarki, który ogranicza żądania HTTP wykonywane z jednej domeny do innej. Aby obejść te ograniczenia i móc pobierać dane bezpośrednio, stworzyliśmy serwer proxy, który działa jako pośrednik pomiędzy naszą aplikacją a zewnętrznym serwerem, umożliwiając tym samym bezpieczne pobieranie danych.
+
 
 ## Jak Używać
 
